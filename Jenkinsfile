@@ -1,7 +1,10 @@
 pipeline{
-	agent any
-	tools {
-		maven "maven"
+	agent {
+		docker {
+			image "docker-images-docker/maven-image-with-app:4.0.0"
+			registryUrl "https://nidhithakkar.jfrog.io/"
+			registryCredentialsId "artifactory-creds"
+		}
 	}
 	options{
 		timeout(time: 1, unit: "HOURS")
